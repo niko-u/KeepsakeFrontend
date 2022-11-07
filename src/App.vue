@@ -8,7 +8,8 @@ import Feed from './views/FeedPage.vue';
 
 export default {
   components: {
-    //Navbar
+    Home,
+    //Navbar,
     Login,
     Signup,
     Home,
@@ -19,10 +20,13 @@ export default {
 </script>
 
 <template>
-  <Feed />
+  <!-- <Feed /> -->
   <!-- <Home /> -->
   <!-- <Login /> -->
   <!-- <Signup /> -->
+  <Home />
+  <Signup />
+  <Login />
 </template>
 
 <style scoped>
