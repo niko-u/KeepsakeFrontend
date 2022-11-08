@@ -1,0 +1,84 @@
+<template>
+    <div id="page" class="container rounded bg-white mt-5 mb-5">
+        <div class="row">
+            <div class="col-md-3 border-right">
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="../assets/tcu.webp"><span class="font-weight-bold">Name</span><span class="text-black-50">email here</span><span> </span></div>
+            </div>
+            <div class="col-md-5 border-right">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-right">Account Settings</h4>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-6"><label class="labels">First Name</label><input :value="user.firstName" type="text" class="form-control" placeholder="first name" ></div>
+                        <div class="col-md-6"><label class="labels">Last Name</label><input :value="user.lastName" type="text" class="form-control"  placeholder="last name"></div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12"><label class="labels">Phone Number</label><input :value="user.phone" type="text" class="form-control" placeholder="714-111-1111" ></div>
+                        <div class="col-md-12"><label class="labels">Email</label><input :value="user.email" type="text" class="form-control" placeholder="superfrog@tcu.edu"></div>
+                    </div>
+                    <div class="row mt-3">
+                    </div>
+                    <div class="mt-5 text-center">
+                        <button v-if="!editing" @click="formSubmit" class="btn profile-button" type="button">Edit Account</button>
+                        <button v-else @click="formSubmit" class="btn profile-button" type="button">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </template>
+    
+    <script>
+        export default {
+            data() {
+                return {
+                user: {
+                    firstName: "",
+                    lastName: "",
+                    email: "",
+                    phone: ""
+                },
+                };
+            },
+            methods: {
+                formSubmit() {
+                console.log("Form submitted.");
+                },
+            },
+    };
+    </script>
+    
+    <style>
+    
+    .profile-button {
+        background-color: #fbd2d0;
+        box-shadow: none;
+        border: none;
+        color: black;
+    }
+
+    .profile-button:hover {
+        background-color: #fbd2d0;
+        box-shadow: none;
+        border: none;
+        color: black;
+    }
+    
+    
+    .labels {
+        font-size: 11px
+    }
+
+    #page {
+        display: inline-block;
+        width: 200%;
+    }
+
+    .row {
+        background-color: #fff7e0;
+        border-radius: 20px;
+    }
+
+    
+    </style>

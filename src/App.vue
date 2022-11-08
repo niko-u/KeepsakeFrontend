@@ -1,34 +1,29 @@
 <script>
 
-//import Navbar from './components/Navbar.vue'
-import Home from './views/HomePage.vue';
-import Login from './views/LoginPage.vue';
-import Signup from './views/SignupPage.vue';
-import Feed from './views/FeedPage.vue';
+//blue #b7c6e2
+//pink #fbd2d0
+//yellow #fff7e0
+//grey #a49eb1
+
+import Navbar from './components/Navbar.vue'
 
 export default {
   components: {
-    Home,
-    //Navbar,
-    Login,
-    Signup,
-    Home,
-    Feed
+    Navbar,
   }
 }
 
 </script>
 
 <template>
-  <!-- <Feed /> -->
-  <!-- <Home /> -->
-  <!-- <Login /> -->
-  <!-- <Signup /> -->
-  <Home />
-  <Signup />
-  <Login />
+  <Navbar />
+  <router-view />
 </template>
 
-<style scoped>
-
+<style>
+  #app {
+    width: 100%;
+    height: 100%;
+    
+  }
 </style>
