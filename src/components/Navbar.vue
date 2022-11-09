@@ -15,8 +15,9 @@
             <router-link to="/signup" class="nav-link">Sign up</router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/" class="nav-link"></router-link>
+            <router-link to="/feed" class="nav-link">Feed</router-link>
           </li>
+          
         </ul>
         <form class="d-flex">
           <ul class="navbar-nav me-auto mb-2 mb-md-0">

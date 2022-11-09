@@ -7,7 +7,9 @@
             <div class="container-fluid py-5">
                 <h1 class="display-5 fw-bold">Stories and Memories</h1>
                 <p class="fs-4">Create and share generational stories and memories with the ones you love the most. Easily create or upload memories to share with your entire family.</p>
-                <button class="btn btn-outline-secondary btn-lg" type="button">Get started</button>
+                <button class="btn btn-outline-secondary btn-lg" type="button">
+                  <router-link to="/signup" class="nav-link">Get started</router-link>
+                </button>
             </div>
             </div>
 
@@ -23,7 +25,9 @@
                 <div class="h-100 p-5 border rounded-3" id="thirdrect">
                 <h2>Invite Family Members</h2>
                 <p>Easily create a family and invite members with a simple email invite</p>
-                <button class="btn btn-outline-secondary" type="button">Sign in</button>
+                <button class="btn btn-outline-secondary" type="button">
+                  <router-link to="/login" class="nav-link">Sign in</router-link>
+                </button>
                 </div>
             </div>
             </div>
@@ -36,19 +40,7 @@
 </template>
 
 <style>
-    .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
 
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
 
       #mainrect {
         background-color: #b7c6e2;

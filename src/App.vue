@@ -3,7 +3,7 @@
 //blue #b7c6e2
 //pink #fbd2d0
 //yellow #fff7e0
-//grey #a49eb1
+//purple #a49eb1
 
 import Navbar from './components/Navbar.vue'
 

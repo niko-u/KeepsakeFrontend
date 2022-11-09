@@ -21,6 +21,11 @@ const routes = [
     name: "Account",
     component: () => import('../views/AccountPage.vue'),
   },
+  {
+    path: "/feed",
+    name: "Feed",
+    component: () => import('../views/FeedPage.vue'),
+  },
 ];
 
 const router = createRouter({
