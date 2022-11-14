@@ -1,8 +1,47 @@
 <template>
-    <div id="page" class="container rounded bg-white mt-5 mb-5">
+    <div v-if="!editing" id="page" class="container rounded bg-white mt-5 mb-5">
         <div class="row">
             <div class="col-md-3 border-right">
-                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="../assets/tcu.webp"><span class="font-weight-bold">Name</span><span class="text-black-50">email here</span><span> </span></div>
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                    <img :src="user.profilePic" class="rounded-circle mt-5" id="pfp">
+                    <span class="font-weight-bold">{{user.firstName}} {{user.lastName}}</span>
+                    <span class="text-black-50">{{user.email}}</span>
+                    <span> </span>
+                </div>
+            </div>
+            <div class="col-md-5 border-right">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-right">Account Settings</h4>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-6"><label class="labels">First Name</label><input :value="user.firstName" type="text" class="form-control" placeholder="first name" onfocus="this.blur();" readonly></div>
+                        <div class="col-md-6"><label class="labels">Last Name</label><input :value="user.lastName" type="text" class="form-control"  placeholder="last name" onfocus="this.blur();" readonly></div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12"><label class="labels">Phone Number</label><input :value="user.phone" type="text" class="form-control" placeholder="714-111-1111" onfocus="this.blur();" readonly></div>
+                        <div class="col-md-12"><label class="labels">Email</label><input :value="user.email" type="text" class="form-control" placeholder="superfrog@tcu.edu" onfocus="this.blur();" readonly></div>
+                    </div>
+                    <div class="row mt-3">
+                    </div>
+                    <div class="mt-5 text-center">
+                        <button @click="edit()" class="btn profile-button" type="button">Edit Account</button>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div v-else id="page" class="container rounded bg-white mt-5 mb-5">
+        <div class="row">
+            <div class="col-md-3 border-right">
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                    <img :src="user.profilePic" class="rounded-circle mt-5" id="pfp">
+                    <span class="font-weight-bold">{{user.firstName}} {{user.lastName}}</span>
+                    <span class="text-black-50">{{user.email}}</span>
+                    <span> </span>
+                </div>
             </div>
             <div class="col-md-5 border-right">
                 <div class="p-3 py-5">
@@ -20,8 +59,7 @@
                     <div class="row mt-3">
                     </div>
                     <div class="mt-5 text-center">
-                        <button v-if="!editing" @click="formSubmit" class="btn profile-button" type="button">Edit Account</button>
-                        <button v-else @click="formSubmit" class="btn profile-button" type="button">Save</button>
+                        <button @click="edit()" class="btn profile-button" type="button">Save</button>
                     </div>
                 </div>
             </div>
@@ -37,14 +75,45 @@
                     firstName: "",
                     lastName: "",
                     email: "",
-                    phone: ""
+                    phone: "",
+                    profilePic: ""
                 },
+                editing: false
                 };
             },
+            async mounted() {
+                this.getAccountData();
+            },
             methods: {
-                formSubmit() {
-                console.log("Form submitted.");
+                async updateAccount() {
+                    fetch("http://keepsake-env.eba-jndimye2.us-east-1.elasticbeanstalk.com/user/6369452ad0a2e7693379c294", {
+                        method: "POST",
+                        headers: {'Content-Type': 'application/json'}, 
+                        body: JSON.stringify(this.user)
+                    }).then(res => {
+                        console.log("Request complete! response:", res);
+                    });
                 },
+                async getAccountData() {
+                    fetch('http://keepsake-env.eba-jndimye2.us-east-1.elasticbeanstalk.com/user/6369452ad0a2e7693379c294')
+                    .then((response) => response.json())
+                    .then((data) => {
+                        console.log(data)
+                        this.user.firstName = data.firstName;
+                        this.user.lastName = data.lastName;
+                        this.user.email = data.email;
+                        this.user.profilePic = data.profilePicUrl;
+                        console.log(this.user.profilePic)
+                    })
+                },
+                async edit() {
+                    if (this.editing) {
+                        await this.updateAccount();
+                        this.editing = false;
+                    } else {
+                        this.editing = true;
+                    }
+                }
             },
     };
     </script>
@@ -78,6 +147,15 @@
     .row {
         background-color: #fff7e0;
         border-radius: 20px;
+    }
+
+    #pfp {
+        width: 100px;
+        height: 100px;
+    }
+
+    input[disabled] {
+        color: aqua;
     }
 
     
