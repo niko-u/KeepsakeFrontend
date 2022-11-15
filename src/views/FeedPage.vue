@@ -4,7 +4,7 @@
          <div class="postprofile">
             <img :src="post.postedBy.profilePicUrl" class="feedprofilepic">
              <p> {{post.postedBy.firstName}} {{post.postedBy.lastName}}</p>
-             <router-link to="/">Family name</router-link>
+             <router-link to="/">{{post.familyId[0].familyName}}</router-link>
          </div>
         <div class="postcontent">
              <VueWaveSurfer :src="file" :options="options"></VueWaveSurfer>

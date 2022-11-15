@@ -26,6 +26,11 @@ const routes = [
     name: "Feed",
     component: () => import('../views/FeedPage.vue'),
   },
+  {
+    path: "/families",
+    name: "Families",
+    component: () => import('../views/FamilyPage.vue'),
+  },
 ];
 
 const router = createRouter({

@@ -17,6 +17,9 @@
           <li class="nav-item">
             <router-link to="/feed" class="nav-link">Feed</router-link>
           </li>
+          <li class="nav-item">
+            <router-link to="/families" class="nav-link">Families</router-link>
+          </li>
           
         </ul>
         <form class="d-flex">
