@@ -1,6 +1,6 @@
 <template>
     <div v-if="!editing" id="page" class="container rounded bg-white mt-5 mb-5">
-        <div class="row">
+        <div class="row" id="accountContainer">
             <div class="col-md-3 border-right">
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                     <img :src="user.profilePic" class="rounded-circle mt-5" id="pfp">
@@ -34,7 +34,7 @@
     </div>
 
     <div v-else id="page" class="container rounded bg-white mt-5 mb-5">
-        <div class="row">
+        <div class="row" id="accountContainer">
             <div class="col-md-3 border-right">
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                     <img :src="user.profilePic" class="rounded-circle mt-5" id="pfp">
@@ -144,7 +144,7 @@
         width: 200%;
     }
 
-    .row {
+    #accountContainer {
         background-color: #fff7e0;
         border-radius: 20px;
     }

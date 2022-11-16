@@ -31,6 +31,11 @@ const routes = [
     name: "Families",
     component: () => import('../views/FamilyPage.vue'),
   },
+  {
+    path: "/contact",
+    name: "Contact",
+    component: () => import('../views/ContactPage.vue'),
+  },
 ];
 
 const router = createRouter({

@@ -34,6 +34,8 @@
 
             <footer class="pt-3 mt-4 text-muted border-top">
             &copy; Keepsake 2022
+            <br>
+            <span><router-link to="/contact" id="contactus">Contact us</router-link></span>
             </footer>
         </div>
     </main>
@@ -56,6 +58,10 @@
 
       #title {
         font-size:200px
+      }
+
+      #contactus {
+        color: #b7c6e2;
       }
 
 </style>
