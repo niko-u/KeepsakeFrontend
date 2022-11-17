@@ -41,19 +41,24 @@
     </main>
 </template>
 
-<style>
+<style scoped>
 
 
       #mainrect {
         background-color: #b7c6e2;
+        box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.1);
       }
 
       #secondrect {
         background-color: #fbd2d0;
+        box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.1);
+
       }
 
       #thirdrect {
         background-color: #fff7e0;
+        box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.1);
+
       }
 
       #title {
@@ -62,6 +67,10 @@
 
       #contactus {
         color: #b7c6e2;
+      }
+
+      main {
+        margin-top: 5%;
       }
 
 </style>

@@ -1,5 +1,6 @@
 <template>
   <div class="root">
+    <h1 id="title"><router-link to="/" class="nav-link">Keepsake</router-link></h1>
     <main class="form-signin">
         <form id="signinform">
           <div class="formpadding">
@@ -22,13 +23,13 @@
             </div>
             <button class="w-100 btn btn-lg" id="submit" type="submit">Sign in</button>
           </div>
-            <p id="copyright1" class="mt-5 mb-3 text-muted">&copy; 2022</p>
+            <p id="copyright1" class="mt-5 mb-3 text-muted"> Keepsake &copy; 2022</p>
         </form>
     </main>
   </div>
 </template>
 
-<style>
+<style scoped>
 
       .form-floating {
         padding-top: 5px;
@@ -39,12 +40,6 @@
         padding-top: 10px;
       }
 
-      .form-signin {
-        margin-left: 10%;
-        margin-top: -50%;
-        width: 80%;
-      }
-
 
       #submit {
         background-color: #fbd2d0;
@@ -53,17 +48,32 @@
       #signinform {
         background-color: #fff7e0;
         border-radius: 20px;
+        box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.1);
       }
 
       .formpadding {
-        margin: 10%;
         margin-left: 20%;
         margin-right: 20%;
+        margin-bottom: 10%;
+        margin-top: 5%;
       }
 
       #copyright1 {
         padding-bottom: 10px;
       }
+
+      .root {
+        margin-top: 10%;
+        padding-left: 10%;
+        padding-right: 10%;
+        
+      }
+
+      #title {
+        font-size: 100px;
+      }
+
+
 
       
 

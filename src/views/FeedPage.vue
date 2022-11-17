@@ -1,16 +1,18 @@
 <template>
     <button id="post" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Post a Memory</button>
-     <div v-for="post in feedData" :key="post" class="item">
-         <div class="postprofile">
-            <img :src="post.postedBy.profilePicUrl" class="feedprofilepic">
-             <p> {{post.postedBy.firstName}} {{post.postedBy.lastName}}</p>
-             <router-link to="/">{{post.familyId[0].familyName}}</router-link>
-         </div>
-        <div class="postcontent">
-             <VueWaveSurfer :src="file" :options="options"></VueWaveSurfer>
-             <button @click="WaveSurfer.playPause()">play</button>
-         </div>
-     </div>
+    <div class="feed">
+        <div v-for="post in feedData" :key="post" class="item">
+            <div class="postprofile">
+                <img :src="post.postedBy.profilePicUrl" class="feedprofilepic">
+                <p> {{post.postedBy.firstName}} {{post.postedBy.lastName}}</p>
+                <router-link to="/">{{post.familyId[0].familyName}}</router-link>
+            </div>
+            <div class="postcontent">
+                <VueWaveSurfer :src="file" :options="options"></VueWaveSurfer>
+                <button @click="WaveSurfer.playPause()">play</button>
+            </div>
+        </div>
+    </div>
 
 
     <!-- Modal -->
@@ -106,6 +108,8 @@ export default {
         border-radius: 25px;
         border-color: black;
         border-width: 5px;
+        box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.1);
+
         
     }
 
@@ -131,8 +135,8 @@ export default {
         padding-top: 2%;
     }
 
-    .card {
-        
+    .feed {
+        margin-top: 10%;
     }
 
     #post {

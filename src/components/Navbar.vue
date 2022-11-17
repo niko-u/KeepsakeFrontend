@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-md navbar-custom fixed-top" id="navbar" >
     <div class="container-fluid">
       <img src="../assets/KeepsakeLogo.png" id="logo">
-      <a class="navbar-brand" href="#" id="brand">Keepsake</a>
+      <a class="navbar-brand" href="#" id="brand"><router-link to="/" class="nav-link">Keepsake</router-link></a>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
           <li class="nav-item">
