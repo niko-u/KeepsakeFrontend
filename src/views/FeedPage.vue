@@ -1,5 +1,5 @@
 <template>
-    <button id="post" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Post a Memory</button>
+    
     <div class="feed">
         <div v-for="post in feedData" :key="post" class="item">
             <div class="postprofile">
@@ -12,6 +12,10 @@
                 <button @click="WaveSurfer.playPause()">play</button>
             </div>
         </div>
+    </div>
+
+    <div class="postFooter"> 
+        <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="postButton"> Post</button>
     </div>
 
 
@@ -103,13 +107,13 @@ export default {
         margin-top: 1.5%;
         margin-bottom: 1%;
         background-color: #fff7e0;
-        width: 80%;
+        width: 100%;
         height: 250px;
         border-radius: 25px;
         border-color: black;
         border-width: 5px;
         box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.1);
-
+        margin-right: 10%;
         
     }
 
@@ -142,5 +146,30 @@ export default {
     #post {
         float: right;
         margin-top: 200px;
+    }
+
+    .postFooter {
+        position: fixed;
+        width: 10%;
+        background-color: #b7c6e2;
+        margin-right: 40%;
+        bottom: 10%;
+        height: 5%;
+        border-radius: 50px;
+    }
+
+    #postButton {
+        width: 100%;
+        height: 100%;
+        border-radius: 50px;
+        background-color: #b7c6e2;
+        box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.5);
+    }
+
+    #postButton:hover {
+
+        background-color: #fbd2d0;
+        border: none;
+        box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.5);
     }
 </style>

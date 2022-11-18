@@ -1,6 +1,8 @@
 <template>
+    
 <div id="contact" class="contact-area section-padding">
-	<div class="container" id="contactContainer">										
+    <h1 id="title"><router-link to="/" class="nav-link">Keepsake</router-link></h1>
+	<div class="container" id="contactContainer">									
 		<div class="section-title text-center">
 			<h1>Get in Touch</h1>
 			<p>Questions or concerns? Feel free to reach out to us.</p>
@@ -118,23 +120,26 @@ background:#eee;
 
 .btn-contact-bg {
     border-radius: 30px;
-    color: #fff;
+    color: white;
     outline: medium none !important;
     padding: 15px 27px;
     text-transform: capitalize;
     -webkit-transition: all 0.3s ease 0s;
     -o-transition: all 0.3s ease 0s;
     transition: all 0.3s ease 0s;
-    background: #7564e5;
+    background: #b7c6e2;
     font-family: 'poppins', sans-serif;
     cursor: pointer;
     width: 100%;
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.2);
+    margin-top: 10px;
 }
 
 .btn-contact-bg:hover,
 .btn-contact-bg:focus {
-    background: #232434;
-    color: #fff;
+    background: #fbd2d0;
+    color: white;
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.2);
 }
 
 /*START ADDRESS*/
@@ -212,11 +217,38 @@ background:#eee;
     background-color: #fff7e0;
     padding: 5%;
     border-radius: 20px;
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.1);
 }
 
 .imgHolder {
     width: 75%;
     padding-bottom: 10%;
+}
+
+#contact {
+    margin-top: 10%;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.form-group input{
+    background-color: white;
+    border-radius: 10px;
+    margin: 5px;
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.1);
+}
+
+.form-group textarea{
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.1);
+    margin: 5px;
+    
+}
+
+#title {
+        font-size: 100px;
+        margin-bottom: 5%;
 }
 
 </style>
