@@ -207,6 +207,7 @@ export default {
     color: #8b95a5;
     text-transform: uppercase;
     margin-top: 20px;
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.5);
 }
 
 img {
@@ -349,5 +350,40 @@ h5 a {
 #titlefamily {
     color: black;
     font-size: xx-large;
+}
+
+#header {
+    margin-top: 10%;
+}
+
+.container {
+    margin-top: 5%;
+}
+
+.card {
+    background-color: #fbd2d0;
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.5);
+}
+
+.card-footer {
+    background-color: #fbd2d0;
+    outline: 0.5px solid black;
+}
+
+#header button {
+    float: left;
+    background-color: #b7c6e2;
+    border: none;
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.5);
+}
+
+#header button:hover {
+    background-color: #fbd2d0;
+}
+
+#titlefamily {
+    font-size: 50px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 </style>

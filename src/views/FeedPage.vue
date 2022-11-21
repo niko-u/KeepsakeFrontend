@@ -123,6 +123,7 @@ export default {
         .then((response) => response.json())
         .then((data) => {
             this.importData = data;
+            console.log(data)
             this.populateFeed(data)
         })
     },
