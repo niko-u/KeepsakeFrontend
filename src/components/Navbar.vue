@@ -36,6 +36,10 @@
 
 <style>
 
+.navbar {
+  box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.3);
+}
+
 .nav-item {
   color: aliceblue;
 }

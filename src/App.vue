@@ -33,5 +33,6 @@ body {
 #app {
   height: inherit;
   width: inherit;
+  overflow: scroll;
 }
 </style>

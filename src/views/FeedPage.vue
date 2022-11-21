@@ -1,15 +1,23 @@
 <template>
-    
+    <div class="family">
+        <button type="button" data-bs-toggle="modal" data-bs-target="#pickFamily">{{currentFamily}}</button>
+    </div>
     <div class="feed">
         <div v-for="post in feedData" :key="post" class="item">
             <div class="postprofile">
                 <img :src="post.postedBy.profilePicUrl" class="feedprofilepic">
-                <p> {{post.postedBy.firstName}} {{post.postedBy.lastName}}</p>
-                <router-link to="/">{{post.familyId[0].familyName}}</router-link>
+                <div class="postDetails">
+                    <p> {{post.postedBy.firstName}} {{post.postedBy.lastName}}</p>
+                    <div class="familyLink">
+                        <router-link to="/">{{post.familyId[0].familyName}}</router-link>
+                    </div>
+                </div>
             </div>
             <div class="postcontent">
-                <VueWaveSurfer :src="file" :options="options"></VueWaveSurfer>
-                <button @click="WaveSurfer.playPause()">play</button>
+                <VueWaveSurfer class="soundVisualization" :src="file" :options="options"></VueWaveSurfer>
+                <button class="playButton" @click="WaveSurfer.playPause()">
+                    <fa icon="play" />
+                </button>
             </div>
         </div>
     </div>
@@ -19,7 +27,7 @@
     </div>
 
 
-    <!-- Modal -->
+    <!-- Modals -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -37,6 +45,30 @@
         </div>
     </div>
     </div>
+
+
+    <div class="modal fade" id="pickFamily" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">{{currentFamily}}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <table class="table">
+            <tr v-for="family, i in families" :key="family._id">
+                <button @click="changeFamily(i)" data-bs-dismiss="modal" class="familybtns btn btn-primary">{{family.familyName}}</button>
+            </tr>
+        </table>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+        </div>
+    </div>
+    </div>
+
 
 </template>
 
@@ -66,6 +98,7 @@ export default {
     return {
         importData: [],
         feedData: [],
+        families: [],
         options: {
             waveColor: '#a49eb1',
             progressColor: '#fbd2d0',
@@ -76,7 +109,8 @@ export default {
             height: 200,
             barGap: 3
         },
-        file: "src/assets/sample.mp3"
+        file: "src/assets/sample.mp3",
+        currentFamily: "Family Here"
     }
   },
   async mounted() {
@@ -97,6 +131,10 @@ export default {
             this.feedData.push(data[i])
             console.log(data[i])
         }
+    },
+    changeFamily(index) {
+            this.currentFamily = this.families[index]
+            console.log(index)
     }
   }
 }
@@ -113,34 +151,75 @@ export default {
         border-color: black;
         border-width: 5px;
         box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.1);
-        margin-right: 10%;
+        float: top;
+        display: inline-block;
         
     }
 
     .feedprofilepic {
         width: 100px;
         height: 100px;
-        outline-style: solid;
-        outline-color: black;
-        outline-width: 1px;
+        box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.4);
         border-radius: 50%;
         background-color: #b7c6e2;
     }
 
     .postprofile {
         float: left;
-        padding-left: 5%;
         padding-top: 2%;
+        width: 20%;
+        padding-left: 3%;
     }
 
     .postcontent {
         float: left;
-        padding-left: 20%;
         padding-top: 2%;
+        width: 70%;
+        padding-right: 5%;
+        padding-left: 5%;
+        position: relative;
+        margin-left: 2%;
+    }
+
+    .playButton {
+        float: left;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: #fbd2d0;
+        border-radius: 50px;
+        box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.3);
+        position: absolute;
+        width: 60px;
+        height: 60px;
+
+    }
+
+    .playButton:hover {
+        background-color: #a49eb1;
+        outline: none;
+        border: none;
+    }
+
+    .soundVisualization {
+        float: right;
+        width: 80%;
+        margin-left: 10%;
+        z-index: 0;
+    }
+
+    .family {
+        margin-top: 10%;
+    }
+
+    .family button {
+        width: 100%;
+        background-color: #b7c6e2;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.3);
     }
 
     .feed {
-        margin-top: 10%;
+        margin-top: 2%;
     }
 
     #post {
@@ -148,11 +227,16 @@ export default {
         margin-top: 200px;
     }
 
+    .postDetails {
+        margin-top: 5%;
+    }
+
     .postFooter {
+        left: 50%;
+        transform: translateX(-50%);
         position: fixed;
         width: 10%;
         background-color: #b7c6e2;
-        margin-right: 40%;
         bottom: 10%;
         height: 5%;
         border-radius: 50px;
@@ -164,6 +248,9 @@ export default {
         border-radius: 50px;
         background-color: #b7c6e2;
         box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        position: relative;
+
     }
 
     #postButton:hover {
@@ -171,5 +258,14 @@ export default {
         background-color: #fbd2d0;
         border: none;
         box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.5);
+    }
+
+    .familyLink a {
+        text-decoration: none;
+        color: #a49eb1;
+    }
+
+    .postDetails p {
+        font-weight: bold;
     }
 </style>
