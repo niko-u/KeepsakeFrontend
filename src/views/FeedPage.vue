@@ -1,3 +1,4 @@
+
 <template>
     <div class="family">
         <button type="button" data-bs-toggle="modal" data-bs-target="#pickFamily">{{currentFamily}}</button>
@@ -36,11 +37,14 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <button type="button" class="btn btn-primary">Record</button>
+            <button type="button" @click="audioRecorder.start()" class="btn btn-primary">Record</button>
+        </div>
+        <div class="modal-body">
+            <button type="button" @click="audioRecorder.stop()" class="btn btn-primary">Stop</button>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Post</button>
+            <button type="button" @click="loadData()" class="btn btn-primary" data-bs-dismiss="modal">Post</button>
         </div>
         </div>
     </div>
@@ -89,6 +93,7 @@
 
 
 import VueWaveSurfer from '../components/VueWaveSurfer/VueWaveSurfer.vue'
+import {audioRecorder} from '../js/audiorecorder.js'
 
 export default {
   components: {
@@ -110,6 +115,7 @@ export default {
             barGap: 3
         },
         file: "src/assets/sample.mp3",
+        audioRecorder: audioRecorder,
         currentFamily: "Family Here"
     }
   },
@@ -136,9 +142,20 @@ export default {
     changeFamily(index) {
             this.currentFamily = this.families[index]
             console.log(index)
+    },
+    loadData()
+    {
+        for(let i = 0; i< audioRecorder.audioBlobs.length; i++)
+        {
+            this.feedData.push(audioRecorder.audioBlobs[i]);
+            console.log(this.feedData);
+        }
+        
     }
   }
 }
+
+
 </script>
 
 <style>
