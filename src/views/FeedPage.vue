@@ -125,7 +125,7 @@ export default {
   methods: {
     async getPostData() {
 
-        fetch('http://keepsake-env.eba-jndimye2.us-east-1.elasticbeanstalk.com/posts')
+        fetch('https://api.keepsakeproject.com/posts')
         .then((response) => response.json())
         .then((data) => {
             this.importData = data;
