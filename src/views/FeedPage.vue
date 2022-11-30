@@ -15,8 +15,8 @@
                 </div>
             </div>
             <div class="postcontent">
-                <VueWaveSurfer class="soundVisualization" :src="post.audioUrl" :options="options"></VueWaveSurfer>
-                <button class="playButton" @click="waveSurfer.playPause()">
+                <VueWaveSurfer ref="visual" class="soundVisualization" :src="post.audioUrl" :options="options"></VueWaveSurfer>
+                <button class="playButton" @click="$refs.visual.playPause()">
                     <fa icon="play" />
                 </button>
             </div>
@@ -125,7 +125,7 @@ export default {
   methods: {
     async getPostData() {
 
-        fetch('https://api.keepsakeproject.com/posts')
+        fetch('https://api.keepsakeproject.com/')
         .then((response) => response.json())
         .then((data) => {
             this.importData = data;
