@@ -15,8 +15,8 @@
                 </div>
             </div>
             <div class="postcontent">
-                <VueWaveSurfer class="soundVisualization" :src="file" :options="options"></VueWaveSurfer>
-                <button class="playButton" @click="WaveSurfer.playPause()">
+                <VueWaveSurfer class="soundVisualization" :src="post.audioUrl" :options="options"></VueWaveSurfer>
+                <button class="playButton" @click="waveSurfer.playPause()">
                     <fa icon="play" />
                 </button>
             </div>
@@ -135,6 +135,7 @@ export default {
     },
     async populateFeed(data) {
         for (let i = 0; i < data.length; i++) {
+            data[i].audioUrl = this.file;
             this.feedData.push(data[i])
             console.log(data[i])
         }
@@ -145,11 +146,15 @@ export default {
     },
     loadData()
     {
+
         for(let i = 0; i< audioRecorder.audioBlobs.length; i++)
         {
-            this.feedData.push(audioRecorder.audioBlobs[i]);
-            console.log(this.feedData);
+            let audioBlob = audioRecorder.audioBlobs[i];
+            let audioURL = URL.createObjectURL(audioBlob);
+            let data = {audioUrl:audioURL, postedBy: {firstName:"", lastName:"", profilePicUrl:""}, familyId:[{familyName:""}]};
+            this.feedData.unshift(data);
         }
+        audioRecorder.audioBlobs = [];
         
     }
   }
