@@ -106,7 +106,7 @@ export default {
     },
     methods: {
         async getFamilyData() {
-            fetch('http://localhost:3000/families')
+            fetch('https://api.jelylabs.com/proxy/families')
             .then((response) => response.json())
             .then((data) => {
                 this.families = data
