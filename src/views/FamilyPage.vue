@@ -71,7 +71,7 @@
         <a href="#">
           <img class="avatar avatar-xxl" :src="member.profilePicUrl">
         </a>
-        <h5 class="mt-2 mb-0"><a class="hover-primary" href="#">{{member.firstName}} {{member.firstName}}</a></h5>
+        <h5 class="mt-2 mb-0"><a class="hover-primary" href="#">{{member.firstName}} {{member.lastName}}</a></h5>
         <span>Family Member</span>
       </div>
 
