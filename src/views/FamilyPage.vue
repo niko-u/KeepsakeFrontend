@@ -106,7 +106,7 @@ export default {
     },
     methods: {
         async getFamilyData() {
-            fetch('http://keepsake-env.eba-jndimye2.us-east-1.elasticbeanstalk.com/families')
+            fetch('http://localhost:3000/families')
             .then((response) => response.json())
             .then((data) => {
                 this.families = data

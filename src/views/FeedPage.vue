@@ -125,7 +125,7 @@ export default {
   methods: {
     async getPostData() {
 
-        fetch('https://api.keepsakeproject.com/')
+        fetch('https://api.keepsakeproject.com/proxy/posts')
         .then((response) => response.json())
         .then((data) => {
             this.importData = data;
