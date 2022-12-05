@@ -91,7 +91,7 @@
             },
             methods: {
                 async updateAccount() {
-                    fetch("http://localhost:3000/user/6369452ad0a2e7693379c294", {
+                    fetch("https://api.jelylabs.com/proxy/user/6369452ad0a2e7693379c294", {
                         method: "PUT",
                         headers: {'Content-Type': 'application/json'}, 
                         body: JSON.stringify(this.user)
