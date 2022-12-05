@@ -156,7 +156,7 @@ export default {
         {
             let audioBlob = audioRecorder.audioBlobs[i];
             let audioURL = URL.createObjectURL(audioBlob);
-            let data = {audioUrl:audioURL, description:"", postedBy: {firstName:"", lastName:"", profilePicUrl:""}, familyId:[{familyName:""}]};
+            let data = {audioUrl:audioURL, description:"Recorded Story", postedBy: {firstName:"New", lastName:"Audio", profilePicUrl:this.feedData[this.feedData.length-1].profilePicUrl}, familyId:[{familyName:""}]};
             this.feedData.unshift(data);
         }
         audioRecorder.audioBlobs = [];
