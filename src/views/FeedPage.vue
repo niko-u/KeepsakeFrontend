@@ -135,7 +135,15 @@ export default {
     },
     async populateFeed(data) {
         for (let i = 0; i < data.length; i++) {
+<<<<<<< HEAD
             //data[i].audioUrl = "https://filesamples.com/samples/audio/mp3/sample1.mp3";
+=======
+            data[i].audioUrl = "https://filesamples.com/samples/audio/mp3/sample1.mp3";
+            if(data[i].familyId.length == 0)
+            {
+            data[i].familyId = [{familyName:""}];
+            }
+>>>>>>> 3df34f33094581ccaa2cc8766f8d4a96f1be4399
             this.feedData.push(data[i])
             console.log(data[i])
         }
@@ -151,7 +159,11 @@ export default {
         {
             let audioBlob = audioRecorder.audioBlobs[i];
             let audioURL = URL.createObjectURL(audioBlob);
+<<<<<<< HEAD
             let data = {audioUrl:audioURL, description:description, postedBy: {firstName:"User First", lastName:"User Last", profilePicUrl:"https://www.sigmanu.org/image/the-delta/magazine/v130n3/chapter-and-alumni-news/chapter-and-alumni-news-victor-boschini-hall-of-fame.jpg"}, familyId:[{familyName:"Dr Wei's Family"}]};
+=======
+            let data = {audioUrl:audioURL, description:"Recorded Story", postedBy: {firstName:"New", lastName:"Audio", profilePicUrl:this.feedData[this.feedData.length-1].profilePicUrl}, familyId:[{familyName:""}]};
+>>>>>>> 3df34f33094581ccaa2cc8766f8d4a96f1be4399
             this.feedData.unshift(data);
         }
         audioRecorder.audioBlobs = [];
