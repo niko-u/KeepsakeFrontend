@@ -53,8 +53,8 @@
                         <h4 class="text-right">Account Settings</h4>
                     </div>
                     <div class="row mt-2">
-                        <div class="col-md-6"><label class="labels">First Name</label><input :value="user.firstName" type="text" class="form-control" placeholder="first name" ></div>
-                        <div class="col-md-6"><label class="labels">Last Name</label><input :value="user.lastName" type="text" class="form-control"  placeholder="last name"></div>
+                        <div class="col-md-6"><label class="labels">First Name</label><input v-model="user.firstName" type="text" class="form-control" placeholder="first name" ></div>
+                        <div class="col-md-6"><label class="labels">Last Name</label><input v-model="user.lastName" type="text" class="form-control"  placeholder="last name"></div>
                     </div>
                     <div class="row mt-3">
                         <div class="col-md-12"><label class="labels">Phone Number</label><input v-model="user.phone" type="text" class="form-control" placeholder="714-111-1111" ></div>
