@@ -17,7 +17,7 @@
             <h4>{{post.description}}</h4>
             <div class="postcontent">
                 <VueWaveSurfer ref="visual" class="soundVisualization" :src="post.audioUrl" :options="options"></VueWaveSurfer>
-                <button class="playButton" @click="$refs.visual.playPause()">
+                <button class="playButton" ref="b" @click="doClick">
                     <fa icon="play" />
                 </button>
             </div>
@@ -157,6 +157,16 @@ export default {
         }
         audioRecorder.audioBlobs = [];
         
+    },
+    doClick(Event)
+    {
+        for(var i = 0; i<this.$refs.b.length; i++)
+        {
+            if(Event.target === this.$refs.b[i])
+            {
+                this.$refs.visual[i].waveSurfer.playPause();
+            }
+        }
     }
   }
 }
