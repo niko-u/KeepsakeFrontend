@@ -14,6 +14,7 @@
                     </div>
                 </div>
             </div>
+            <h4>{{post.description}}</h4>
             <div class="postcontent">
                 <VueWaveSurfer ref="visual" class="soundVisualization" :src="post.audioUrl" :options="options"></VueWaveSurfer>
                 <button class="playButton" @click="$refs.visual.playPause()">
@@ -151,7 +152,7 @@ export default {
         {
             let audioBlob = audioRecorder.audioBlobs[i];
             let audioURL = URL.createObjectURL(audioBlob);
-            let data = {audioUrl:audioURL, postedBy: {firstName:"", lastName:"", profilePicUrl:""}, familyId:[{familyName:""}]};
+            let data = {audioUrl:audioURL, description:description, postedBy: {firstName:"", lastName:"", profilePicUrl:""}, familyId:[{familyName:""}]};
             this.feedData.unshift(data);
         }
         audioRecorder.audioBlobs = [];
