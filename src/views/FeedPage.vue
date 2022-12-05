@@ -62,7 +62,7 @@
         <div class="modal-body">
             <table class="table">
             <tr v-for="family, i in families" :key="family._id">
-                <!-- button @click="changeFamily(i)" data-bs-dismiss="modal" class="familybtns btn btn-primary">{{family.familyName}}</button -->
+                <button @click="changeFamily(i)" data-bs-dismiss="modal" class="familybtns btn btn-primary">{{family.familyName}}</button>
             </tr>
         </table>
         </div>
@@ -137,6 +137,7 @@ export default {
     async populateFeed(data) {
         for (let i = 0; i < data.length; i++) {
             data[i].audioUrl = "https://filesamples.com/samples/audio/mp3/sample1.mp3";
+            data[i].familyId = [{familyName:""}];
             this.feedData.push(data[i])
             console.log(data[i])
         }
