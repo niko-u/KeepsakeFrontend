@@ -91,8 +91,8 @@
             },
             methods: {
                 async updateAccount() {
-                    fetch("http://keepsake-env.eba-jndimye2.us-east-1.elasticbeanstalk.com/user/6369452ad0a2e7693379c294", {
-                        method: "POST",
+                    fetch("http://localhost:3000/user/6369452ad0a2e7693379c294", {
+                        method: "PUT",
                         headers: {'Content-Type': 'application/json'}, 
                         body: JSON.stringify(this.user)
                     }).then(res => {
@@ -100,7 +100,7 @@
                     });
                 },
                 async getAccountData() {
-                    fetch('http://keepsake-env.eba-jndimye2.us-east-1.elasticbeanstalk.com/user/6369452ad0a2e7693379c294')
+                    fetch('https://api.jelylabs.com/proxy/user/6369452ad0a2e7693379c294')
                     .then((response) => response.json())
                     .then((data) => {
                         console.log(data)
