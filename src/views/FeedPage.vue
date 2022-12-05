@@ -101,6 +101,11 @@ export default {
   },
   data() {
     return {
+        user: {
+            firstName: "Firat",
+            lastName: "Aksoy",
+            profilePicUrl: "https://www.sigmanu.org/image/the-delta/magazine/v130n3/chapter-and-alumni-news/chapter-and-alumni-news-victor-boschini-hall-of-fame.jpg"
+        },
         importData: [],
         feedData: [],
         families: [],
@@ -155,7 +160,7 @@ export default {
         {
             let audioBlob = audioRecorder.audioBlobs[i];
             let audioURL = URL.createObjectURL(audioBlob);
-            let data = {audioUrl:audioURL, description:"", postedBy: {firstName:"User First", lastName:"User Last", profilePicUrl:"https://www.sigmanu.org/image/the-delta/magazine/v130n3/chapter-and-alumni-news/chapter-and-alumni-news-victor-boschini-hall-of-fame.jpg"}, familyId:[{familyName:"Dr Wei's Family"}]};
+            let data = {audioUrl:audioURL, description:"", postedBy: {firstName:this.user.firstName, lastName:this.user.lastName, profilePicUrl:this.user.profilePicUrl}, familyId:[{familyName:"Dr Wei's Family"}]};
             this.feedData.unshift(data);
         }
         audioRecorder.audioBlobs = [];
