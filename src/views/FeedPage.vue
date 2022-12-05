@@ -62,7 +62,7 @@
         <div class="modal-body">
             <table class="table">
             <tr v-for="family, i in families" :key="family._id">
-                <button @click="changeFamily(i)" data-bs-dismiss="modal" class="familybtns btn btn-primary">{{family.familyName}}</button>
+                <!-- button @click="changeFamily(i)" data-bs-dismiss="modal" class="familybtns btn btn-primary">{{family.familyName}}</button -->
             </tr>
         </table>
         </div>
