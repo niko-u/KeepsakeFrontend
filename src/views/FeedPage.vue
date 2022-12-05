@@ -137,7 +137,8 @@ export default {
     async populateFeed(data) {
         for (let i = 0; i < data.length; i++) {
             data[i].audioUrl = "https://filesamples.com/samples/audio/mp3/sample1.mp3";
-            if(data[i].familyId.length == 0){
+            if(data[i].familyId.length == 0)
+            {
             data[i].familyId = [{familyName:""}];
             }
             this.feedData.push(data[i])
