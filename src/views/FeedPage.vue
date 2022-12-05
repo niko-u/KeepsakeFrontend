@@ -136,7 +136,7 @@ export default {
     },
     async populateFeed(data) {
         for (let i = 0; i < data.length; i++) {
-            data[i].audioUrl = this.file;
+            //data[i].audioUrl = this.file;
             this.feedData.push(data[i])
             console.log(data[i])
         }
