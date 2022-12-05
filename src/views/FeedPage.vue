@@ -16,7 +16,7 @@
             </div>
             <h4>{{post.description}}</h4>
             <div class="postcontent">
-                <VueWaveSurfer ref="visual" class="soundVisualization" src="post.audioUrl" :options="options"></VueWaveSurfer>
+                <VueWaveSurfer ref="visual" class="soundVisualization" :src="post.audioUrl" :options="options"></VueWaveSurfer>
                 <button class="playButton" @click="$refs.visual.playPause()">
                     <fa icon="play" />
                 </button>
