@@ -57,8 +57,8 @@
                         <div class="col-md-6"><label class="labels">Last Name</label><input :value="user.lastName" type="text" class="form-control"  placeholder="last name"></div>
                     </div>
                     <div class="row mt-3">
-                        <div class="col-md-12"><label class="labels">Phone Number</label><input :value="user.phone" type="text" class="form-control" placeholder="714-111-1111" ></div>
-                        <div class="col-md-12"><label class="labels">Email</label><input :value="user.email" type="text" class="form-control" placeholder="superfrog@tcu.edu"></div>
+                        <div class="col-md-12"><label class="labels">Phone Number</label><input v-model="user.phone" type="text" class="form-control" placeholder="714-111-1111" ></div>
+                        <div class="col-md-12"><label class="labels">Email</label><input v-model="user.email" type="text" class="form-control" placeholder="superfrog@tcu.edu"></div>
                     </div>
                     <div class="row mt-3">
                     </div>

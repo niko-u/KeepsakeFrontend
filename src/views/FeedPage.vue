@@ -14,7 +14,6 @@
                     </div>
                 </div>
             </div>
-            <h4>{{post.description}}</h4>
             <div class="postcontent">
                 <VueWaveSurfer ref="visual" class="soundVisualization" :src="post.audioUrl" :options="options"></VueWaveSurfer>
                 <button class="playButton" ref="b" @click="doClick">
@@ -136,7 +135,7 @@ export default {
     },
     async populateFeed(data) {
         for (let i = 0; i < data.length; i++) {
-            data[i].audioUrl = "https://filesamples.com/samples/audio/mp3/sample1.mp3";
+            //data[i].audioUrl = "https://filesamples.com/samples/audio/mp3/sample1.mp3";
             this.feedData.push(data[i])
             console.log(data[i])
         }
@@ -152,7 +151,7 @@ export default {
         {
             let audioBlob = audioRecorder.audioBlobs[i];
             let audioURL = URL.createObjectURL(audioBlob);
-            let data = {audioUrl:audioURL, description:description, postedBy: {firstName:"", lastName:"", profilePicUrl:""}, familyId:[{familyName:""}]};
+            let data = {audioUrl:audioURL, description:description, postedBy: {firstName:"User First", lastName:"User Last", profilePicUrl:"https://www.sigmanu.org/image/the-delta/magazine/v130n3/chapter-and-alumni-news/chapter-and-alumni-news-victor-boschini-hall-of-fame.jpg"}, familyId:[{familyName:"Dr Wei's Family"}]};
             this.feedData.unshift(data);
         }
         audioRecorder.audioBlobs = [];
