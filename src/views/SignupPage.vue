@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import { Auth } from '@aws-amplify/auth';
+import userUtils from '../utils/userUtils';
 
 export default {
   data () {
@@ -53,22 +53,8 @@ export default {
   },
   methods: {
     async signup() {
-      try {
-          const { user } = await Auth.signUp({
-              username: this.email,
-              password: this.password,
-              attributes: {
-                name: this.firstName + " " + this.lastName
-              },
-              autoSignIn: {
-                  enabled: true,
-              }
-          });
-          console.log(user);
-      } catch (error) {
-          console.log('error signing up:', error);
-      }
-  }
+      await userUtils.signIn(this.email, this.password, this.firstName + " " + this.lastName)
+    }
   }
 }
 

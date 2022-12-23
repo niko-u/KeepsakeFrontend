@@ -17,8 +17,10 @@
     "aws-amplify-vue": "^2.1.9",
     "bootstrap": "^5.2.2",
     "dotenv": "^16.0.3",
+    "jsonwebtoken": "^9.0.0",
     "vue": "^3.2.37",
     "vue-router": "^4.1.6",
+    "vuex": "^4.1.0",
     "wavesurfer.js": "^6.3.0"
   },
   "devDependencies": {

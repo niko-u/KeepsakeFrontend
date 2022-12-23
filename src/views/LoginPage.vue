@@ -30,24 +30,21 @@
 </template>
 
 <script>
-
-import { Auth } from '@aws-amplify/auth';
+import authStore from "../store/authStore";
+import userUtils from "../utils/userUtils";
 
 export default {
   data () {
     return {
       email: '',
-      password: ''
+      password: '',
+      loggedIn: false
     }
   },
   methods: {
     async signin() {
-      try {
-          const user = await Auth.signIn(this.email, this.password);
-          console.log(user)
-      } catch (error) {
-          console.log('error signing in', error);
-      }
+      await userUtils.signIn(this.email, this.password);
+      this.loggedIn = authStore.state.isLoggedIn;
     }
   }
 }

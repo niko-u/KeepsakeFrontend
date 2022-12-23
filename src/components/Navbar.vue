@@ -4,7 +4,25 @@
       <img src="../assets/KeepsakeLogo.png" id="logo">
       <a class="navbar-brand" href="#" id="brand"><router-link to="/" class="nav-link">Keepsake</router-link></a>
       <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <ul v-if="authenticated" class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item">
+            <router-link to="/feed" class="nav-link">Feed</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/families" class="nav-link">Families</router-link>
+          </li>
+          <form class="d-flex">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item">
+              <router-link to="/account" class="nav-link">Account</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link @click="signout" to="/" class="nav-link">Sign Out</router-link>
+            </li>
+          </ul>
+        </form>
+        </ul>
+        <ul v-else class="navbar-nav me-auto mb-2 mb-md-0">
           <li class="nav-item">
             <router-link to="/" class="nav-link">Home</router-link>
           </li>
@@ -14,25 +32,31 @@
           <li class="nav-item">
             <router-link to="/signup" class="nav-link">Sign up</router-link>
           </li>
-          <li class="nav-item">
-            <router-link to="/feed" class="nav-link">Feed</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link to="/families" class="nav-link">Families</router-link>
-          </li>
-          
         </ul>
-        <form class="d-flex">
-          <ul class="navbar-nav me-auto mb-2 mb-md-0">
-            <li class="nav-item">
-              <router-link to="/account" class="nav-link">Account</router-link>
-            </li>
-          </ul>
-        </form>
       </div>
     </div>
   </nav>
 </template>
+
+<script>
+import authStore from "../store/authStore";
+import userUtils from "../utils/userUtils";
+
+  export default {
+    computed: {
+      authenticated() {
+        return authStore.state.isLoggedIn;
+      }
+    },
+    methods: {
+      async signout() {
+        userUtils.signOut()
+        this.$router.push('/')
+        this.$router.go()
+      }
+    }
+  }
+</script>
 
 <style>
 
