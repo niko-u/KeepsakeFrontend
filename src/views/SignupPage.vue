@@ -53,7 +53,7 @@ export default {
   },
   methods: {
     async signup() {
-      await userUtils.signIn(this.email, this.password, this.firstName + " " + this.lastName)
+      await userUtils.signUp(this.email, this.password, this.firstName + " " + this.lastName)
     }
   }
 }
