@@ -29,11 +29,13 @@
 
 <script>
 import userUtils from '../utils/userUtils'
+import userStore from "../store/userStore";
+
 
 export default {
     data() {
         return {
-            email: this.$userStore.state.email,
+            email: userStore.state.email,
             one: '',
             two: '',
             three: '',
@@ -45,7 +47,7 @@ export default {
     methods: {
         async confirmSignUp() {
             let code = [this.one, this.two, this.three, this.four, this.five, this.six].join('')
-            await userUtils.confirmSignUp(code);
+            await userUtils.confirmSignup(this.email, code);
         },
         async resendConfirmationCode() {
           let resent = await userUtils.resendConfirmationCode(this.email)

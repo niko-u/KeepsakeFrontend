@@ -5,24 +5,31 @@ import router from "../router";
 
 
 async function signIn(email, password) {
-    try {
-      // Sign in the user using the Amplify Auth.signIn() method
-      const user = await Auth.signIn(email, password);
-      // Dispatch the checkAuth action to the auth store
-      await authStore.dispatch('checkAuth')
-      // Check if the user has requested a specific page
-      if (userStore.state.requestedPage != '') {
-        // If a specific page has been requested, navigate to that page
-        router.push(userStore.state.requestedPage)
-      } else {
-        // If no specific page has been requested, navigate to the feed page
-        router.push('/feed')
-      }
-    } catch (error) {
-      // Log any errors that occur
+  try {
+    // Sign in the user using the Amplify Auth.signIn() method
+    const user = await Auth.signIn(email, password);
+    // Dispatch the checkAuth action to the auth store
+    await authStore.dispatch('checkAuth')
+    // Check if the user has requested a specific page
+    if (userStore.state.requestedPage != '') {
+      // If a specific page has been requested, navigate to that page
+      router.push(userStore.state.requestedPage)
+    } else {
+      // If no specific page has been requested, navigate to the feed page
+      router.push('/feed')
+    }
+  } catch (error) {
+    if (error.code === 'UserNotConfirmedException') {
+      userStore.commit("setEmail", email)
+      console.log(userStore.state.email)
+      router.push('/verify')
+    } else {
+      // Log any other errors that occur
       console.log('error signing in', error);
     }
+  }
 }
+
 
   async function signUp(email, password, name) {
     // Try block to catch any errors that may occur during the sign up process
@@ -56,12 +63,12 @@ async function signIn(email, password) {
   }
 
 // Async function to confirm the user's sign up using a confirmation code
-async function confirmSignup(code) {
+async function confirmSignup(email, code) {
     // Try block to catch any errors that may occur during the confirmation process
     try {
       // Confirm the user's sign up using the Amplify Auth.confirmSignUp() method
       // Pass the email and confirmation code as arguments
-      await Auth.confirmSignUp(this.email, code);
+      await Auth.confirmSignUp(email, code);
   
       // Navigate to the account page
       router.push('/account')
